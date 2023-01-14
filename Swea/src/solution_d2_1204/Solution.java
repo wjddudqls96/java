@@ -4,19 +4,19 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
-public class Solution_D2_1204_ÃÖºó¼ö±¸ÇÏ±â {
+public class Solution{
 	
 	public static void main(String[] args) throws Exception {
 		
 		/*
-		 *  0. ÀÔ·ÂÆÄÀÏ ÀÐ¾îµéÀÌ±â
+		 *  0. ï¿½Ô·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½ï¿½ï¿½Ì±ï¿½
 		 * */
 		
 		//System.setIn(new FileInputStream("1204_input.txt"));
-		// bufferedReader ¼Óµµ ´À¸°°É º¸¿ÏÇØÁÖ´Â º¸Á¶½ºÆ®¸², inputSteamReader ÁÖ ½ºÆ®¸²
+		// bufferedReader ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½, inputSteamReader ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		
-		// °á°ú¸¦ ÇÑ ¹ø¿¡ Ãâ·ÂÇÏ±â À§ÇÑ StringBuilder »ý¼º -> ÇÑ°³¾¿ Ãâ·ÂÇÏ¸é ¼Óµµ¿¡¼­ ¿µÇâÀ» ¹ÌÄ§.
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ StringBuilder ï¿½ï¿½ï¿½ï¿½ -> ï¿½Ñ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä§.
 		StringBuilder sb = new StringBuilder();
 		
 		int T;

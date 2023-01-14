@@ -1,4 +1,4 @@
-package solution_D4_¹Ì·Î2;
+package solution_D4_ë¯¸ë¡œ2;
 
 import java.io.BufferedReader;
 
@@ -20,7 +20,7 @@ class Node{
 	}
 }
 
-public class Solution_D4_¹Ì·Î2 {
+public class Solution {
 
 	public static void main(String[] args) throws Exception{
 		//System.setIn(new FileInputStream("src/input.txt"));
@@ -33,7 +33,7 @@ public class Solution_D4_¹Ì·Î2 {
 			T = Integer.parseInt(in.readLine());
 			sb.append("#"+T+" ");
 			
-			// ¹Ì·Î¸¸µé±â
+			// ï¿½Ì·Î¸ï¿½ï¿½ï¿½ï¿½
 			Node[][] maze = new Node[100][100];
 			for(int i = 0; i < 100; i++) {
 				String line = in.readLine();

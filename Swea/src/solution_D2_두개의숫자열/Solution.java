@@ -1,4 +1,4 @@
-package solution_D2_µÎ°³ÀÇ¼ıÀÚ¿­;
+package solution_D2_ë‘ê°œì˜ìˆ«ìì—´;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
