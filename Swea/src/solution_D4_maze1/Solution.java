@@ -1,10 +1,8 @@
-package solution_D4_ë¯¸ë¡œ2;
+package solution_D4_maze1;
 
 import java.io.BufferedReader;
-
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-
 
 class Node{
 	int value;
@@ -23,7 +21,6 @@ class Node{
 public class Solution {
 
 	public static void main(String[] args) throws Exception{
-		//System.setIn(new FileInputStream("src/input.txt"));
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
 		
@@ -33,9 +30,9 @@ public class Solution {
 			T = Integer.parseInt(in.readLine());
 			sb.append("#"+T+" ");
 			
-			// ï¿½Ì·Î¸ï¿½ï¿½ï¿½ï¿½
-			Node[][] maze = new Node[100][100];
-			for(int i = 0; i < 100; i++) {
+			// ? ?‹±ë¡œëªŒ?˜™? ?™?˜™? ï¿?
+			Node[][] maze = new Node[16][16];
+			for(int i = 0; i < 16; i++) {
 				String line = in.readLine();
 				for(int j = 0; j < line.length(); j++) {
 					int value = line.charAt(j) - '0';
@@ -60,7 +57,7 @@ public class Solution {
 	static void dfs(Node[][] maze, int x, int y) {
 		
 		
-		if(x < 0 || x >= 100 || y < 0 || y >= 100) return;
+		if(x < 0 || x >= 16 || y < 0 || y >= 16) return;
 		
 		Node node = maze[y][x];
 		

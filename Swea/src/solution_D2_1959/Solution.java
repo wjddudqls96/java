@@ -1,4 +1,4 @@
-package solution_D2_두개의숫자열;
+package solution_D2_1959;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

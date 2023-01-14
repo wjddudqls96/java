@@ -1,4 +1,4 @@
-package solution_D5_최적경로;
+package solution_D5_Optimalpath;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
