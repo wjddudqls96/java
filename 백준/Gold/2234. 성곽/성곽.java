@@ -14,12 +14,6 @@ class Node{
 		this.x = x;
 		this.y = y;
 	}
-	
-	Node(int x, int y, boolean isCrash){
-		this.x = x;
-		this.y = y;
-		this.isCrash = isCrash;
-	}
 }
 
 public class Main {
@@ -81,7 +75,7 @@ public class Main {
     static void bfs(int x, int y) {
     	int[][] directions = {{-1,0},{0,-1},{1,0},{0,1}};
     	Queue<Node> queue = new LinkedList<>();
-    	queue.add(new Node(x, y, false));
+    	queue.add(new Node(x, y));
     	visited[y][x] = true;
     	
     	while(!queue.isEmpty()) {
