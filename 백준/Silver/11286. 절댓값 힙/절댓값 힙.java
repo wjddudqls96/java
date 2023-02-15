@@ -45,6 +45,7 @@ public class Main {
 				}
 			}
 		});
+		
 		for(int i = 0; i < N; i++) {
 			int num = Integer.parseInt(in.readLine());
 			if(num != 0) {
@@ -52,13 +53,14 @@ public class Main {
 			}
 			else {
 				if(queue.isEmpty()) {
-					System.out.println(0);
+					sb.append(0).append("\n");
 				}
 				else {
-					System.out.println(queue.poll().num);
+					sb.append(queue.poll().num).append("\n");
 				}
 			}
 		}
 		
+		System.out.println(sb);
 	}
 }
