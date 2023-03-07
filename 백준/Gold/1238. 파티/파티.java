@@ -5,9 +5,10 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-class Node{
+class Node implements Comparable<Node>{
 	int num;
 	int distance;
 	
@@ -15,6 +16,10 @@ class Node{
 		super();
 		this.num = num;
 		this.distance = distance;
+	}
+	
+	public int compareTo(Node o1) {
+		return this.distance - o1.distance;
 	}
 }
 
@@ -56,8 +61,8 @@ class Main {
 		Max = Integer.MIN_VALUE;
 		
 		
-		int[] result1 = dijkstra(adjList);
-		int[] result2 = dijkstra(reversed);
+		int[] result1 = test(adjList, X);
+		int[] result2 = test(reversed, X);
 		
 		for(int i = 1; i <= N; i++) {
 			if(result2[i] == INF) continue;
@@ -106,6 +111,34 @@ class Main {
 							break;
 						}
 					}
+				}
+			}
+		}
+		
+		return distance;
+	}
+	
+	static int[] test(ArrayList<ArrayList<Node>> temp, int start) {
+		PriorityQueue<Node> queue = new PriorityQueue<>();
+		queue.offer(new Node(start, 0));
+		
+		distance = new int[N +1];
+		Arrays.fill(distance, INF);
+		visited = new boolean[N + 1];
+		distance[start] = 0;
+		
+		while(!queue.isEmpty()) {
+			Node cur = queue.poll();
+			int num = cur.num;
+			
+			if(visited[num]) continue;
+			
+			visited[num] = true;
+			
+			for(Node next : temp.get(num)) {
+				if(!visited[next.num] && distance[next.num] > distance[num] + next.distance) {
+					distance[next.num] = distance[num] + next.distance;
+					queue.offer(new Node(next.num, distance[next.num]));
 				}
 			}
 		}
