@@ -26,6 +26,7 @@ public class Main {
 				for(int j = 0; j < regax.length(); j++) {
 					if(stack.get(stack.size() - regax.length() + j) != regax.charAt(j)) {
 						flag = false;
+						break;
 					}
 				}
 				
@@ -41,8 +42,8 @@ public class Main {
 			sb.append("FRULA");
 		}
 		else {
-			for(int i = 0; i < stack.size(); i++) {
-				sb.append(stack.get(i));
+			for(Character c : stack) {
+				sb.append(c);
 			}
 		}
 		
