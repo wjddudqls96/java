@@ -22,7 +22,7 @@ public class Main {
     static ArrayList<Pos> list = new ArrayList<>();
     static StringBuilder sb = new StringBuilder();
     public static void main(String[] args) throws Exception {
-        
+       
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = null;
         
@@ -42,7 +42,7 @@ public class Main {
         dfs(0);
     }
     
-    static boolean dfs(int index) {
+    static void dfs(int index) {
     	
     	if(index == list.size()) {
     		
@@ -54,7 +54,6 @@ public class Main {
         	}
         	System.out.println(sb);
         	System.exit(0);
-    		return true;
     	}
         
         Pos cur = list.get(index);
@@ -69,13 +68,9 @@ public class Main {
 
         for(int i = 0; i < possible.size(); i++) {
         	map[cur.y][cur.x] = possible.get(i);
-        	if(!dfs(index + 1)) {
-        		map[cur.y][cur.x] = 0;
-        	}
-        }
-        
-        return false;
-        
+        	dfs(index + 1);
+    		map[cur.y][cur.x] = 0;
+        } 
     }
     
     static ArrayList<Integer> getPossibleArr(boolean[] arr1, boolean[] arr2, boolean[] arr3) {
