@@ -6,9 +6,6 @@ class Solution {
     public int solution(int[] queue1, int[] queue2) {
         // 1. 각 큐의 총합을 저장한다. long 타입으로 저장
         init(queue1, queue2);
-        long expectNum = (sum1 + sum2) / (long) 2;
-        System.out.println(expectNum);
-        
         
         // 2. 두개를 비교하면서 크면 작은쪽에 주고 작으면 큰쪽에서 들고온다.
         int cnt = 0;
@@ -28,6 +25,7 @@ class Solution {
             }
             cnt++;
             
+            // 빼고 추가하는 작업이 큐들이 가지고있는 것들 전부 실행하면 -1? 불안하니깐 50 추가
             if(cnt > queue1.length + queue2.length + 50) return -1;
         }
         
