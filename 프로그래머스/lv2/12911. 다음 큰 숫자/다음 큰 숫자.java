@@ -6,22 +6,19 @@ class Solution {
         
         
         int temp = -1;
-        int count = 0;
-        boolean flag = false;
+        int count = Integer.bitCount(n);
+        
+        
         for(int i = binary.length() - 1; i >= 0 ; i--){
-            if(binary.charAt(i) == '1' && !flag){
+            if(binary.charAt(i) == '1'){
                 temp = (1 << binary.length() - 1 - i);
-                flag = true;
+                break;
             }
-            
-            if(binary.charAt(i) == '1') count++;
         }
         
         binary = Integer.toBinaryString(Integer.parseInt(binary, 2) + temp);
         
-        for(int i = binary.length() - 1; i >= 0 ; i--){
-            if(binary.charAt(i) == '1') count--;
-        }
+        count -= Integer.bitCount(Integer.parseInt(binary, 2));
         
         for(int i = 0; i < count; i++){
             int num = Integer.parseInt(binary, 2);
