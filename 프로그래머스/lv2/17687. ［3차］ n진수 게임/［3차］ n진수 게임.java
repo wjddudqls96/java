@@ -10,13 +10,16 @@ class Solution {
             str += Integer.toString(num++, n);
         }
         
-        str = str.toUpperCase();
+        
         
         for(int i = 0; i < str.length(); i++){
             if(i % m == p - 1 && answer.length() < t){
-                answer += Character.toString(str.charAt(i));
+                answer += str.charAt(i);
             }
         }
+        
+        answer = answer.toUpperCase();
+        
         return answer;
     }
 }
