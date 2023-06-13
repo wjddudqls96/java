@@ -3,7 +3,6 @@ import java.util.*;
 class Solution {
     public int[] solution(String msg) {
         List<Integer> list = new ArrayList<>();
-        
         Map<String, Integer> map = new HashMap<>();
         
         for(int i = 65; i <= 90; i++){
@@ -13,6 +12,7 @@ class Solution {
         for(int i = 0; i < msg.length(); i++){
             int printNum = -1;
             boolean isEnd = false;
+            
             // 사전에 없을떄 까지 문자열 찾기.
             for(int j = i; j < msg.length(); j++){
                 String str = msg.substring(i, j + 1);
