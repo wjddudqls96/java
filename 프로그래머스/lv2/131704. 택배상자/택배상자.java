@@ -7,7 +7,10 @@ class Solution {
         int orderIdx = 1;
         int start = 0;
         
+        
         while(true){
+            boolean flag = false;
+            
             if(!stack.isEmpty() && order[start] == stack.peek()){
                 answer++;
                 start++;
