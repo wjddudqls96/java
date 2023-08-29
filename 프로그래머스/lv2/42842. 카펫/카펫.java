@@ -1,8 +1,8 @@
+import java.util.*;
+
 class Solution {
     public int[] solution(int brown, int yellow) {
         int[] answer = new int[2];
-        
-        // 1. 약수 구하기
         int size = brown + yellow;
         
         for(int i = 3; i < size; i++){
