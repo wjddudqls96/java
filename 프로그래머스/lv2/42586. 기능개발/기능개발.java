@@ -1,58 +1,47 @@
 import java.util.*;
 
-class Dev{
-    int progress;
-    int speed;
-    
-    public Dev(int progress, int speed){
-        this.progress = progress;
-        this.speed = speed;
-    }
-}
-
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
-        List<Integer> answer = new ArrayList<>();
-        Queue<Dev> queue = new ArrayDeque<>();
-        int[] results = new int[102];
-        
+        Queue<Integer> queue = new ArrayDeque<>();
+        // 남은 일수 큐에 넣기
         for(int i = 0; i < progresses.length; i++){
-            queue.offer(new Dev(progresses[i], speeds[i]));
-        }
-        
-        int temp = 0;
-        while(!queue.isEmpty()){
-            Dev dev = queue.poll();
-            int p = dev.progress;
-            int s = dev.speed;
-            int work = 100 - p;
+            int remain = 100 - progresses[i];
+            int mod = remain % speeds[i];
+            int result = remain / speeds[i];
             
-            int result = work / s;
-            
-            if(work % s > 0){
+            if(mod > 0){
                 result++;
             }
             
-            if(result < temp){
-                result = temp;
+            queue.offer(result);
+        }
+        
+        int max = queue.poll();
+        int count = 1;
+        
+        List<Integer> list = new ArrayList<>();
+        
+        while(!queue.isEmpty()){
+            int cur = queue.poll();
+            
+            if(cur > max){
+                max = cur;
+                list.add(count);
+                count = 1;
             }
             else{
-                temp = result;
-            }
-            
-            results[result]++;
-        }
-        
-        for(int i = 0; i < results.length; i++){
-            if(results[i] != 0){
-                answer.add(results[i]);
+                count++;
             }
         }
         
+        list.add(count);
         
+        int[] answer = new int[list.size()];
         
-        return answer.stream()
-                .mapToInt(Integer::intValue)
-                .toArray();
+        for(int i = 0; i < list.size(); i++){
+            answer[i] = list.get(i);
+        }
+        
+        return answer;
     }
 }
