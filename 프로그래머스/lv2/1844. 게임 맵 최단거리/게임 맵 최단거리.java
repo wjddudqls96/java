@@ -28,14 +28,13 @@ class Solution {
     public Pos bfs(int startX, int startY, boolean[][] visited, int[][] maps){
         int[][] direction = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
         Queue<Pos> queue = new ArrayDeque();
-        queue.offer(new Pos(startX, startY, 0));
+        queue.offer(new Pos(startX, startY, 1));
         visited[startY][startX] = true;
         
         while(!queue.isEmpty()){
             Pos cur = queue.poll();
             
             if(cur.x == M - 1 && cur.y == N - 1){
-                cur.count++;
                 return cur;
             }
             
