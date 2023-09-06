@@ -4,7 +4,7 @@ class Solution {
         
         for(int i = 1; i <= n; i++){
             int sum = 0;
-            
+            // 정말 좋다
             for(int j = i; j <= n; j++){
                 sum += j;
                 
