@@ -49,14 +49,13 @@ class Country implements Comparable<Country>{
 	
 	@Override
 	public String toString() {
-		return this.gold + " " + this.silver + " " + this.dong;
+		return this.num + " " + this.gold + " " + this.silver + " " + this.dong;
 	}
 }
 
 public class Main {
     
 	public static void main(String[] args) throws Exception {
-    
     	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     	StringBuilder sb = new StringBuilder();
     	StringTokenizer st = new StringTokenizer(in.readLine());
@@ -77,22 +76,25 @@ public class Main {
     	
     	
     	int result = 1;
+    
     	
     	Country temp = pq.poll();
     	
-    	while(!pq.isEmpty()) {
-    		result++;
-    		
-    		Country country = pq.poll();
-    		
-    		if(K == country.num) {
-    			if(temp.dong == country.dong && temp.silver == country.silver && temp.gold == country.gold) {
-    				result--;
-    			}
-    			break;
-    		}
-    		
-    		temp = country;
+    	if(temp.num != K) {
+    		while(!pq.isEmpty()) {
+        		result++;
+        		
+        		Country country = pq.poll();
+        		
+        		if(K == country.num) {
+        			if(temp.dong == country.dong && temp.silver == country.silver && temp.gold == country.gold) {
+        				result--;
+        			}
+        			break;
+        		}
+        		
+        		temp = country;
+        	}
     	}
     	
     	System.out.println(result);
