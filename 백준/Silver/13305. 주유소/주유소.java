@@ -12,6 +12,7 @@ public class Main {
 	static int[] lamps;
 	static int N;
 	public static void main(String[] args) throws Exception {
+		
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
 		StringTokenizer st, st2;
@@ -31,8 +32,8 @@ public class Main {
 			prices[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		int temp = prices[0];
-		int sum = 0;
+		long temp = prices[0];
+		long sum = 0;
 		
 		for(int i = 0; i < N - 1; i++) {
 			int nextPrices = prices[i + 1];
