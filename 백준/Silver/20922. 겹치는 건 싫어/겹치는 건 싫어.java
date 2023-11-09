@@ -25,15 +25,12 @@ public class Main {
     	int N = Integer.parseInt(st.nextToken());
     	int M = Integer.parseInt(st.nextToken());
     	
-    	Map<Integer, Integer> map = new HashMap<>();
     	st = new StringTokenizer(in.readLine());
     	int[] arr = new int[N];
     	int[] cnt = new int[100001];
     	
     	for(int i = 0; i < N; i++) {
-    		int num = Integer.parseInt(st.nextToken());
-    		arr[i] = num;
-    		map.put(num, 0);
+    		arr[i] = Integer.parseInt(st.nextToken());
     	}
     	
     	int left = 0;
