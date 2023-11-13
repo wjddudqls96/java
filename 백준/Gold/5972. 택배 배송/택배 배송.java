@@ -85,7 +85,7 @@ public class Main {
 			visited[cur.end] = true;
 			
 			for(Node next : adjList.get(cur.end)) {
-				if(!visited[next.end] && distances[next.end] > distances[cur.end] + next.cost) {
+				if(distances[next.end] > distances[cur.end] + next.cost) {
 					distances[next.end] = distances[cur.end] + next.cost;
 					pq.offer(new Node(next.end, distances[next.end]));
 				}
