@@ -20,7 +20,6 @@ public class Main {
     static int[] arr;
     
 	public static void main(String[] args) throws Exception {
-    	
     	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     	StringBuilder sb = new StringBuilder();
     	StringTokenizer st;
@@ -34,15 +33,15 @@ public class Main {
     	
     	st = new StringTokenizer(in.readLine());
     	
-    	for(int i = 0; i < N; i++) {
-    		arr[i] = Integer.parseInt(st.nextToken());
-    	}
-    	
-    	Arrays.sort(arr);
-    	
     	int left = 1;
-    	int right = arr[arr.length - 1];
+    	int right = -1;
     	int result = 0;
+    	
+    	for(int i = 0; i < N; i++) {
+    		int num = Integer.parseInt(st.nextToken());
+    		arr[i] = num;
+    		right = Math.max(right, num);
+    	}
     	
     	while(left <= right) {
     		int mid = (left + right) / 2;
