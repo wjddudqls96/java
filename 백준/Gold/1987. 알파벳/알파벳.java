@@ -1,67 +1,83 @@
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-class Pos{
-	int x;
-	int y;
-	
-	Pos(int x, int y){
-		this.x = x;
-		this.y = y;
-	}
-}
+
 
 public class Main {
-	static int N, M, MAX;
-	static int[][] map;
-	static int[] visited;
-	static int[][] directions = {{1, 0},{-1, 0},{0, 1},{0, -1}};
+    static int R, C, max;
+    static int[][] map, check;
+    static boolean[] visit;
+    static int[][] dir = {{1, 0},{0, 1},{-1, 0},{0, -1}};
 	public static void main(String[] args) throws Exception {
-		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		
-		StringTokenizer st = new StringTokenizer(in.readLine());
-		N = Integer.parseInt(st.nextToken());
-		M = Integer.parseInt(st.nextToken());
-		
-		map = new int[N][M];
-		visited = new int[26];
-		MAX = Integer.MIN_VALUE;
-		
-		for(int i = 0; i < N; i++) {
-			String line = in.readLine();
-			for(int j = 0; j < M; j++) {
-				map[i][j] = line.charAt(j) - 65;
-			}
-		}
-		
-		dfs(0, 0, 0);
-		System.out.println(MAX);
+    	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    	StringBuilder sb = new StringBuilder();
+    	StringTokenizer st;
+    	
+    	st = new StringTokenizer(in.readLine());
+    	
+    	R = Integer.parseInt(st.nextToken());
+    	C = Integer.parseInt(st.nextToken());
+    	
+    	visit = new boolean[91];
+    	map = new int[R][C];
+    	check = new int[R][C];
+    	
+    	for(int i = 0; i < R; i++) {
+    		String str = in.readLine();
+    		
+    		for(int j = 0; j < C; j++) {
+    			map[i][j] = str.charAt(j) - '0';
+    		}
+    	}
+    	
+    	max = Integer.MIN_VALUE;
+    	
+    	dfs(0, 0, 1);
+    	
+    	System.out.println(max);
 	}
 	
-	static void dfs(int startX, int startY, int count) {
+	static void dfs(int x, int y, int count) {
+		
+		visit[map[y][x]] = true;
+		check[y][x] = 1;
 		
 		
-		if(visited[map[startY][startX]] == 1) {
-			if(MAX < count) {
-				MAX = count;
-			}
+		if(max < count) {
+			max = count;
 		}
-		else {
-			visited[map[startY][startX]] = 1;
+		
+//		for(int[] a : check) {
+//    		System.out.println(Arrays.toString(a));
+//    	}
+//		System.out.println();
+		
+		for(int i = 0; i <4; i++) {
+			int nextX = x + dir[i][0];
+			int nextY = y + dir[i][1];
 			
-			for(int i = 0; i < 4; i++) {
-				int nextX = startX + directions[i][0];
-				int nextY = startY + + directions[i][1];
-				
-				if(nextX >= 0 && nextX < M && nextY >= 0 && nextY < N) {
-	        		dfs(nextX, nextY, count + 1);
-	        	}
-			}
-			visited[map[startY][startX]] = 0;
+			if(nextX < 0 || nextX >= C || nextY < 0 || nextY >= R) continue;
+			
+			if(visit[map[nextY][nextX]]) continue;
+			
+			dfs(nextX, nextY, count + 1);
+			visit[map[nextY][nextX]] = false;
+			check[nextY][nextX] = 0;
+		
 		}
 	}
+	
 }
