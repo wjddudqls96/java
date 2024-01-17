@@ -21,7 +21,6 @@ public class Main {
 	static boolean flag;
 	static StringBuilder sb = new StringBuilder();
 	public static void main(String[] args) throws Exception {
-    	//System.setIn(new FileInputStream("input.txt"));
     	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     	StringTokenizer st;
     	
@@ -39,10 +38,6 @@ public class Main {
 	}
 	
 	static void dfs(int x, int y) {
-		
-		if(flag) {
-			return;
-		}
 		
 		if(x >= 9) {
 			dfs(0, y + 1);
@@ -68,11 +63,14 @@ public class Main {
 				
 				if(isPossible(x, y)) {
 					dfs(x + 1, y);
-					
 				}
 				
-				map[y][x] = 0;
+				if(flag) {
+					return;
+				}
 			}
+			
+			map[y][x] = 0;
 		}
 		else {
 			dfs(x + 1, y);
@@ -80,52 +78,21 @@ public class Main {
 	}
 	
 	static boolean isPossible(int x, int y) {
-		boolean[] visit = new boolean[10];
-		
 		// 1. 가로가가능한지
 		for(int i = 0; i < 9; i++) {
-			int num = map[y][i];
-			
-			if(num == 0) continue;
-			
-			if(visit[num]) {
-				return false;
-			}
-			
-			visit[num] = true;
-		}
-		
-		visit = new boolean[10];
-		
-		// 2. 세로가 가능한지.
-		for(int i = 0; i < 9; i++) {
-			int num = map[i][x];
-			
-			if(num == 0) continue;
-			
-			if(visit[num]) {
-				return false;
-			}
-			
-			visit[num] = true;
+			if (i != y && map[i][x] == map[y][x]) return false; //세로
+            if (i != x && map[y][i] == map[y][x]) return false; //가로
 		}
 		
 		// 3. 블럭이 가능한지.
 		int startX = 3 * (x / 3);
 		int startY = 3 * (y / 3);
-		visit = new boolean[10];
 		
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
-				int num = map[startY + i][startX + j];
+				if(startX + j == x && startY + i == y) continue;
 				
-				if(num == 0) continue;
-				
-				if(visit[num]) {
-					return false;
-				}
-				
-				visit[num] = true;
+				if(map[startY + i][startX + j] == map[y][x]) return false;
 			}
 		}
 		
