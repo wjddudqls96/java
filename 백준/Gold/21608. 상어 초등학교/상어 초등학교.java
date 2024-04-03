@@ -15,7 +15,7 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-class Pos implements Comparable<Pos>{
+class Pos {
 	int x;
 	int y;
 	int count;
@@ -25,18 +25,6 @@ class Pos implements Comparable<Pos>{
 		this.y = y;
 		this.count = count;
 	}
-	
-	@Override
-	public int compareTo(Pos o1) {
-		return o1.count - this.count;
-	}
-
-	@Override
-	public String toString() {
-		return "Pos [x=" + x + ", y=" + y + ", count=" + count + "]";
-	}
-	
-	
 }
 
 public class Main {
@@ -142,7 +130,7 @@ public class Main {
 				
 				if(max < findCnt) {
 					max = findCnt;
-					posList = new ArrayList<>();
+					posList.clear();
 					posList.add(new Pos(j, i, emptyCnt));
 				}
 				else if(max == findCnt) {
@@ -155,36 +143,29 @@ public class Main {
 	}
 	
 	static void secondStep(int idx, List<Pos> posList) {
-		List<Pos> maxEmptyList = new ArrayList<>();
-		Collections.sort(posList);
-		
-		int max = posList.get(0).count;
-		
-		for(Pos pos : posList) {
-			if(max == pos.count) {
-				maxEmptyList.add(pos);
-			}
-		}
-		
-		int minY = Integer.MAX_VALUE;
-		int minX = Integer.MAX_VALUE;
-		
-		for(Pos pos : maxEmptyList) {
-			
-			if(minY > pos.y) {
-				minY = pos.y;
-				minX = pos.x;
-			}
-			else if(minY == pos.y) {
-				
-				if(minX > pos.x) {
-					minY = pos.y;
-					minX = pos.x;
-				}
-			}
-		}
-		
-		map[minY][minX] = idx;
+	    if (posList.isEmpty()) return; // posList가 비어있는 경우 바로 반환
+
+	    // 최대 빈 칸 수와 해당 위치들을 저장할 변수 초기화
+	    int maxEmptyCount = -1;
+	    Pos selectedPos = null;
+
+	    // posList를 순회하며 최대 빈 칸 수를 가진 위치 찾기
+	    for (Pos pos : posList) {
+	        if (pos.count > maxEmptyCount) {
+	            maxEmptyCount = pos.count;
+	            selectedPos = pos; // 새로운 최대 빈 칸 수 위치 저장
+	        } else if (pos.count == maxEmptyCount) {
+	            // y 좌표가 더 작거나 같은데 x 좌표가 더 작은 경우 선택
+	            if (pos.y < selectedPos.y || (pos.y == selectedPos.y && pos.x < selectedPos.x)) {
+	                selectedPos = pos;
+	            }
+	        }
+	    }
+
+	    // 선택된 위치에 학생 배치
+	    if (selectedPos != null) {
+	        map[selectedPos.y][selectedPos.x] = idx;
+	    }
 	}
 
 }
